@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background: linear-gradient(-45deg, #4e54c8, #8f94fb, #b5bce4, #e0e2f1);
+    height: 100vh;
+}
+
+.styled-box {
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.styled-box h1 {
+    color: #333;
+}
+
+.styled-box p {
+    color: #555;
+}
