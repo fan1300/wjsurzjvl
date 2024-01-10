@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Cmpatibla" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>나만의 채팅방 만들기</title>
+        <link href="말풍선.css" rel="stylesheet">
+        <link href="말풍선2.css" rel="stylesheet">
+        <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            height: 100vh;
+            overflow: hidden; 
+            flex-direction: column;
+        }
+
+        .chat-screen {
+            flex: 1;
+            overflow-y: auto; 
+        }
+
+        </style>
+</head>
+<body>
+    <div class="container">
+      <main class="chat-screen">
+          <section class="chat-screen__bar">
+              <div class="user">
+                  <div class="user__column">
+                      <div class="user__pic"></div>
+                  </div>
+                  <div class="user__column">
+                      <p class="user__nick">참여자</p>
+                      <p class="user__count">5</p>
+                  </div>
+              </div>
+          </section>
+          <ul class="chat-screen__texts">
+            <li class="text">반갑다 필조야!</li>
+            <li class="text">시장 놀러가자!</li>
+            <li class="text">반갑다 필조야!</li>
+            <li class="text">반갑다 필조야!</li>
+            <li class="text">시장 놀러가자!</li>
+            <li class="text">시장 놀러가자!</li>
+            <li class="text">오늘은 갈치 먹자!!</li>
+            <li class="text">시장 놀러가자!</li>
+            <li class="text">오늘은 갈치 먹자!!</li>
+            <li class="text">오늘은 갈치 먹자!!</li>
+            <li class="text">오늘은 갈치 먹자!!</li>
+            <li class="text">오늘은 갈치 먹자!!</li>
+            <li class="text">시장 놀러가자!</li>
+            <li class="text">반갑다 필조야!</li>
+            <li class="text">반갑다 필조야!</li>
+            <li class="text">반갑다 필조야!</li>
+            <li class="text">반갑다 필조야!</li>
+            <li class="text">반갑다 필조야!</li>
+
+          </ul>
+      </main>
+  
+      <form class="chat-form">
+          <section class="chat-form__field">
+              <textarea class="chat-form__msg"></textarea>
+              <input type="submit" value="전송" class="chat-form__bt">
+          </section>
+      </form>
+    </div>
+  </body>
+  
+</html>
