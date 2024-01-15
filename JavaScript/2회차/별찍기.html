@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>별 찍기 프로그램</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="container">
+            <strong>패턴을 선택하세요</strong><br>
+            <label for="patternSelect">패턴 선택: </label>
+            <select id="patternSelect">
+                <option value="1">1번</option>
+                <option value="2">2번</option>
+                <option value="3">3번</option>
+            </select>
+            <button onclick="printStars()">별 찍기</button>
+            <div id="result"></div>
+        </div>
+
+        <script>
+            function printStars() {
+                const patternSelect = document.getElementById("patternSelect");
+                const resultContainer = document.getElementById("result");
+
+                resultContainer.innerHTML = "";
+
+                const patternNumber = parseInt(patternSelect.value);
+
+                if (patternNumber === 1) {
+                    for (let i = 1; i <= 5; i++) {
+                        let row = '';
+                        for (let j = 1; j <= i; j++) {
+                            row += '*';
+                        }
+                        resultContainer.innerHTML += row + "<br>";
+                    }
+                } else if (patternNumber === 2) {
+                    for (let i = 1; i <= 5; i++) {
+                        let row = '';
+                        for (let j = 1; j <= i; j++) {
+                            row += '*';
+                        }
+                        resultContainer.innerHTML += row + "<br>";
+                    }
+                    for (let i = 4; i >= 1; i--) {
+                        let row = '';
+                        for (let j = 1; j <= i; j++) {
+                            row += '*';
+                        }
+                        resultContainer.innerHTML += row + "<br>";
+                    }
+                } else if (patternNumber === 3) {
+                    for (let i = 1; i <= 5; i++) {
+                        let spaces = ' '.repeat((5 - i) * 2);
+                        let stars = '*'.repeat(i);
+                        resultContainer.innerHTML += spaces + stars + "<br>";
+                    }
+                    for (let i = 2; i <= 5; i++) {
+                        let spaces = ' '.repeat((i - 1) * 2);
+                        let stars = '*'.repeat(6 - i);
+                        resultContainer.innerHTML += spaces + stars + "<br>";
+                    }
+                } else {
+                    resultContainer.innerHTML = '올바른 패턴 번호를 선택하세요.';
+                }
+            }
+        </script>
+
+    </body>
+</html>
+
+

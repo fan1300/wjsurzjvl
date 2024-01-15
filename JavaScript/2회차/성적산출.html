@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>성적 산출기</title>
+    </head>
+    <body>
+
+        <div id="container">
+            <strong>점수를 입력하면 성적이 산출됩니다.</strong><br>
+            <label for="score">점수: </label>
+            <input type="number" id="score" min="0" max="100">
+            <button onclick="calculateGrade()">성적 산출</button>
+            <p id="result"></p>
+        </div>
+
+        <script>
+            function calculateGrade() {
+                const scoreInput = document.getElementById("score");
+                const resultElement = document.getElementById("result");
+
+                const score = parseFloat(scoreInput.value);
+
+                let grade;
+
+                if (isNaN(score)) {
+                    grade = "올바른 숫자를 입력하세요.";
+                } else if (score >= 90) {
+                    grade = "A";
+                } else if (score >= 80) {
+                    grade = "B";
+                } else if (score >= 70) {
+                    grade = "C";
+                } else if (score >= 60) {
+                    grade = "D";
+                } else {
+                    grade = "F";
+                }
+
+                resultElement.textContent = `입력한 점수 ${score}점에 대한 학점은 ${grade}입니다.`;
+            }
+        </script>
+
+    </body>
+</html>

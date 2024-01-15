@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>숫자 맞추기 게임</title>
+    </head>
+    <body>
+
+        <div id="container">
+            <h1>숫자 맞추기 게임</h1>
+            <p>1에서 100 사이의 숫자를 맞춰보세요!</p>
+            <label for="guessInput">숫자 입력: </label>
+            <input type="number" id="guessInput">
+            <button onclick="checkGuess()">확인</button>
+            <div id="result"></div>
+        </div>
+
+        <script>
+            const secretNumber = Math.floor(Math.random() * 100) + 1;
+            let attempts = 0;
+
+            function checkGuess() {
+                const guessInput = document.getElementById("guessInput");
+                const resultContainer = document.getElementById("result");
+
+                const userGuess = parseInt(guessInput.value);
+
+                if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+                    resultContainer.textContent = "1에서 100 사이의 숫자를 입력하세요.";
+                    return;
+                }
+
+                attempts++;
+
+                if (userGuess === secretNumber) {
+                    resultContainer.innerHTML = `<strong>축하합니다!</strong> ${attempts}번만에 숫자를 맞추셨습니다!`;
+                } else if (userGuess < secretNumber) {
+                    resultContainer.textContent = "그건 너무 작아요";
+                } else {
+                    resultContainer.textContent = "음..좀 큰 것 같은데요..";
+                }
+            }
+        </script>
+
+    </body>
+</html>

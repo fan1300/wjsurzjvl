@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>배수 출력 프로그램</title>
+    </head>
+    <body>
+
+        <div id="container">
+            <label for="multiple">배수: </label>
+            <input type="number" id="multiple">
+            <br>
+            <label for="endNumber">마지막 숫자: </label>
+            <input type="number" id="endNumber">
+            <br>
+            <button onclick="printMultiples()">배수 출력</button>
+            <div id="result"></div>
+        </div>
+
+        <script>
+            function printMultiples() {
+                const multipleInput = document.getElementById("multiple");
+                const endNumberInput = document.getElementById("endNumber");
+                const resultContainer = document.getElementById("result");
+
+                resultContainer.innerHTML = ""; // 결과를 초기화
+
+                const multiple = parseInt(multipleInput.value);
+                const endNumber = parseInt(endNumberInput.value);
+
+                if (isNaN(multiple) || isNaN(endNumber)) {
+                    resultContainer.innerHTML = "올바른 숫자를 입력하세요.";
+                    return;
+                }
+
+                let currentNumber = multiple;
+                let count = 0;
+
+                while (currentNumber <= endNumber) {
+                    resultContainer.innerHTML += currentNumber + " ";
+                    currentNumber += multiple; // 입력된 배수의 배수를 출력하기 위해 배수를 더해줍니다.
+                    count++;
+
+                    if (count % 5 === 0) {
+                        resultContainer.innerHTML += "<br>";
+                    }
+                }
+            }
+        </script>
+
+    </body>
+</html>
+
+
+
+
+
