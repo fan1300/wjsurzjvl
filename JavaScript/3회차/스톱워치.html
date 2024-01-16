@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스톱워치</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    #stopwatch {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+    #buttons {
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>스톱워치</h1>
+  <div id="stopwatch">00:00:00</div>
+  <div id="buttons">
+    <button onclick="startStop()">시작/일시정지</button>
+    <button onclick="reset()">초기화</button>
+  </div>
+
+  <script>
+    let isRunning = false;
+    let elapsedTime = 0;
+    let intervalId;
+
+    function startStop() {
+      if (isRunning) {
+        clearInterval(intervalId);
+      } else {
+        intervalId = setInterval(updateStopwatch, 1000);
+      }
+      isRunning = !isRunning;
+    }
+
+    function reset() {
+      clearInterval(intervalId);
+      elapsedTime = 0;
+      isRunning = false;
+      updateStopwatch();
+    }
+
+    function updateStopwatch() {
+      const stopwatchElement = document.getElementById('stopwatch');
+      const hours = Math.floor(elapsedTime / 3600).toString().padStart(2, '0');
+      const minutes = Math.floor((elapsedTime % 3600) / 60).toString().padStart(2, '0');
+      const seconds = (elapsedTime % 60).toString().padStart(2, '0');
+
+      stopwatchElement.textContent = `${hours}:${minutes}:${seconds}`;
+      elapsedTime++;
+    }
+  </script>
+</body>
+</html>
