@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>현재 날짜와 시간</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    #currentDateTime {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>날짜와 시간</h1>
+  <div id="currentDateTime"></div>
+
+  <script>
+    function updateCurrentDateTime() {
+      const currentDateTimeElement = document.getElementById('currentDateTime');
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = (now.getMonth() + 1).toString().padStart(2, '0');
+      const day = now.getDate().toString().padStart(2, '0');
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+
+      currentDateTimeElement.innerHTML = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    }
+
+    window.onload = function() {
+      updateCurrentDateTime();
+      setInterval(updateCurrentDateTime, 1000);
+    };
+  </script>
+</body>
+</html>
