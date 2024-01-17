@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사진 슬라이드쇼</title>
+    <style>
+        #slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .mySlides {
+            display: none;
+            width: 100%;
+        }
+
+        #stopButton {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="slideshow-container">
+    <div class="mySlides">
+        <img src="1.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="2.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="3.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="4.jpg" style="width:100%">
+    </div>
+
+    <button id="stopButton" onclick="stopSlideshow()">멈춰</button>
+</div>
+
+<script>
+    let slideIndex = 0;
+    let slideshowInterval;
+
+    showSlides();
+
+    function showSlides() {
+        const slides = document.getElementsByClassName("mySlides");
+
+        if (slides.length === 0) {
+            alert('이미지가 없습니다.');
+            return;
+        }
+
+        let i;
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        slideIndex++;
+
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+        slideshowInterval = setTimeout(showSlides, 2000);
+    }
+
+    function stopSlideshow() {
+        clearTimeout(slideshowInterval);
+        alert('이미지가 멈추었습니다.');
+    }
+</script>
+
+</body>
+</html>
+

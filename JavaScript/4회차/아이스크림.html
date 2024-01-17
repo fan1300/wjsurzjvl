@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이스크림 목록</title>
+</head>
+<body>
+
+<h1>아이스크림 목록</h1>
+
+<button onclick="addFlavor()">종류 추가</button>
+<button onclick="printName()">이름 출력</button>
+<button onclick="printList()">목록 출력</button>
+
+<div id="result"></div>
+
+<script>
+    const iceCreamList = [];
+
+    function addFlavor() {
+        const flavor = prompt("아이스크림 입력!!:");
+        if (flavor) {
+            iceCreamList.push(flavor);
+            alert(`아이스크림 "${flavor}"가 목록에 추가되었어요!`);
+        }
+    }
+
+    function printName() {
+        if (iceCreamList.length === 0) {
+            alert('아무것도 없어요...');
+        } else {
+            const randomIndex = Math.floor(Math.random() * iceCreamList.length);
+            alert(`제가 아무거나 꺼내봤어요: ${iceCreamList[randomIndex]}`);
+        }
+    }
+
+    function printList() {
+        if (iceCreamList.length === 0) {
+            alert('아이스크림이 없는데요??');
+        } else {
+            const listString = iceCreamList.join(', ');
+            alert(`아이스크림 목록이요 ㅎㅎ: ${listString}`);
+        }
+    }
+</script>
+
+</body>
+</html>

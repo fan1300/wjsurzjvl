@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가바보게임</title>
+</head>
+<body>
+    <h1>가위바위보 게임</h1>
+    <button onclick="playGame('주먹')">바위</button>
+    <button onclick="playGame('보')">보</button>
+    <button onclick="playGame('가위')">가위</button>
+
+    <div id="result"></div>
+
+    <script>
+        function playGame(userChoice) {
+            const choices = ['주먹', '보', '가위'];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+            let result;
+
+            if (userChoice === computerChoice) {
+                result = '무승부!';
+            } else if (
+                (userChoice === '주먹' && computerChoice === '가위') ||
+                (userChoice === '보' && computerChoice === '주먹') ||
+                (userChoice === '가위' && computerChoice === '보')
+            ) {
+                result = '이겼습니다!';
+            } else {
+                result = '졌습니다!';
+            }
+
+            document.getElementById('result').textContent = `컴퓨터의 선택: ${computerChoice}, 결과: ${result}`;
+        }
+    </script>
+</body>
+</html>
