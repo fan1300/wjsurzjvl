@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Cmpatibla" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적표</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1>성적표</h1>
+
+        <h2>전체</h2>
+        <table id="allTable">
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>점수</th>
+                </tr>
+            </thead>
+            <tbody id="allList"></tbody>
+        </table>
+
+        <h2>기본</h2>
+        <table id="basicTable">
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>점수</th>
+                </tr>
+            </thead>
+            <tbody id="basicList"></tbody>
+        </table>
+
+        <h2>심화</h2>
+        <table id="advancedTable">
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>점수</th>
+                </tr>
+            </thead>
+            <tbody id="advancedList"></tbody>
+        </table>
+    </div>
+
+    <script>
+        const students = [
+            { name: '짱구', score: 45 },
+            { name: '맹구', score: 75 },
+            { name: '철수', score: 95 },
+            { name: '훈이', score: 50 },
+            { name: '유리', score: 68 },
+            { name: '수지', score: 86 }
+        ];
+
+        const allList = document.getElementById('allList');
+        students.forEach(student => {
+            const allListItem = document.createElement('tr');
+            allListItem.innerHTML = `<td>${student.name}</td><td>${student.score}</td>`;
+            allList.appendChild(allListItem);
+        });
+
+        const basicList = document.getElementById('basicList');
+        const basicResult = students.filter(student => student.score > 75);
+        const basicRandomStudent = basicResult[Math.floor(Math.random() * basicResult.length)];
+
+        if (basicRandomStudent) {
+            const basicListItem = document.createElement('tr');
+            basicListItem.innerHTML = `<td>${basicRandomStudent.name}</td><td>${basicRandomStudent.score}</td>`;
+            basicList.appendChild(basicListItem);
+        } else {
+            const basicListItem = document.createElement('tr');
+            basicListItem.innerHTML = '<td colspan="2">기준을 충족하는 학생이 없습니다.</td>';
+            basicList.appendChild(basicListItem);
+        }
+
+        const advancedList = document.getElementById('advancedList');
+        const advancedResult = basicResult.sort((a, b) => b.score - a.score);
+
+        advancedResult.forEach(student => {
+            const advancedListItem = document.createElement('tr');
+            advancedListItem.innerHTML = `<td>${student.name}</td><td>${student.score}</td>`;
+            advancedList.appendChild(advancedListItem);
+        });
+    </script>
+</body>
+</html>
